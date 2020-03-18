@@ -1,0 +1,5 @@
+v-on 可以监听多个方法吗?
+
+可以 栗子：<input type="text" 
+            v-on="{input:onInput,focus:onFocus,blur:onBlur}" 
+          />

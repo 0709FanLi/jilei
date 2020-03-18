@@ -1,0 +1,4 @@
+<keep-alive></keep-alive>的作用是什么？
+
+keep-alive 是Vue内置的一个组件，可以使被包含的组件保留状态，
+或避免重新渲染。
