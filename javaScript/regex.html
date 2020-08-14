@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>文档标题</title>
+</head>
+<body>
+    <h3>正则表达式</h3>
+    <h4></h4>
+</body>
+</html>
+<script>
+
+    // 1. test: 正则匹配字符串或正则表达式,成功返回true,失败返回false
+    // 2. search: 正则匹配字符串或正则表达式,成功返回匹配到的字符串的位置,失败返回-1
+    // 1. match: 正则匹配字符串或正则表达式,成功返回匹配成功的数组,失败返回null
+    // 1. replace: 正则匹配字符串或正则表达式,匹配成功的替换成新的字符串
+
+    // search 1. 使用正则表达式 2. 使用字符串,字符串参数会转化为正则表达式
+    let str = "Visit Runoob!"; 
+    let patt = str.search('/un/i');     //  -1
+    let n = str.search(/un/i);
+    let nn = str.search('un');
+    console.log('patt',patt);
+    console.log('n',n);                 // 7
+    console.log('nn',nn);               // 7
+
+    // replace 1. 使用正则表达式 2. 使用字符串
+    let strReplace = 'li guang yuan';
+    let txt = strReplace.replace(/g/ig,'---');
+    let txttt = strReplace.replace('g','---');
+    console.log('txt',txt);
+    console.log('txttt',txttt);
+
+    // i 不区分大小写
+    // g 全局匹配
+    // m 多行匹配
+    let strm = 'This is an\n antzone good';
+    var regm1 = /an$/;
+    var regm2 = /od$/;
+    var regm3 = /an$/m;
+    console.log(strm.search(regm1));              //-1  没有找到
+    console.log(strm.search(regm2));              //22  
+    console.log(strm.search(regm3));              // 8  多行匹配可以查询到
+
+    ////////////////////////////////////////////////
+    //  [] 查找方括号之间的任何字符
+    let strz = "巫峡粉丝 WuXiaFenSi 酸辣粉 火锅粉 豌豆粉丝 suan_la_fen huo_guo_fen wan_dou_fen_si 023-91781688";
+ 
+    let regz = /[a-z]/g; //匹配所有a到z之间的字母，包括a和z
+    let resultz = strz.replace(regz,""); //将匹配到的所有字符替换成空
+    console.log(resultz); //上面将匹配到的所有小写字母都替换成了空，所以留下的全是中文,大写字母,符号,数字
+
+    let regn = /[0-9]/g;        // 匹配所有的0-9之间的数字
+    let resultn = strz.replace(regn,'');//将匹配到的所有字符替换成空
+    console.log('resultn',resultn);//上面将匹配到的所有数字都替换成了空，
+
+    var strs = "巫峡粉丝 WuXiaFenSi 酸辣粉 火锅粉 豌豆粉丝 suan_la_fen huo_guo_fen wan_dou_fen_si 023-91781688";
+    var regs = /[^a-z]/ig; //匹配所有a到z(包括a和z)以外的字符，不区分大小写,意思就是大写字母也会被匹配到
+    var results = strs.replace(regs,""); //将匹配到的所有字符替换成空
+    console.log(results);//除了小写字母和大写字母以外的字符都被替换成空了，那么剩下的就只有小写字母和大写字母了
+
+    var strr = "5 9 11 22 25 31 35 50 6 3 9 19 10";
+    var regr = /[1-2][0-9]/g; //匹配所有个位数字是0-9，十位数字是1-2的数字
+    var resultr = strReplace.match(regr); //返回匹配到的所有字符
+    console.log(resultr);
+
+    // () 分组操作
+    
+
+</script>
