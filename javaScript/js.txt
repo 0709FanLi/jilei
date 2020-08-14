@@ -1,0 +1,7 @@
+js 包含的数据类型
+
+引用类型 object array function
+
+基本类型 Number String Boolean null undefined symbol
+
+js 共有九种数据类型 引用类型三种 基本类型六种

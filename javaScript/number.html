@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>文档标题</title>
+</head>
+<body>
+    <h3>1. 数字的常用的方法</h3>
+    <h4></h4>
+</body>
+</html>
+<script>
+
+    // 1) toString 将数字转化为字符串
+    let a1 = 1.2;
+    let t1 = a1.toString()
+    console.log(typeof a1);  //  number
+    console.log(typeof t1);  //  string
+
+    // 2) toLocaleString 根据本地时间把Date对象转换为字符串
+    //                   将数字变为千分位格式
+    let a2 = new Date();
+    let t2 = a2.toLocaleString();
+    let t22 = a2.toLocaleDateString();
+    let t222 = a2.toLocaleTimeString();
+    console.log(t2);                //  2020/8/13 下午5:19:50
+    console.log(t22);               //  2020/8/13
+    console.log(t222);              //  下午5:19:50
+    
+    let a22 = 12345678;
+    a22 = a22.toLocaleString();     
+    console.log(a22);               //  12,345,678
+
+    // 3) toFixed()  返回字符串值,它包含了指定小数位数的数字
+    let a3 = 1.112, aa3 = 100,aaa3=1233333.456789;
+    let t3 = a3.toFixed(2);
+    let t33 = a3.toFixed(2);
+    let t333 = aaa3.toLocaleString('en-IN', { maximumFractionDigits: 4 })
+    console.log(t3);
+    console.log(t33);
+    console.log(t333);
+
+    // 4) Number()  可以把Javascript 转换为数值
+    Number(true)    // 1
+    Number(false)   //0
+    let a4 = new Date();
+    console.log(Number(a4)) // 1568186258917 时间戳  Number() 方法返回 1970 年 1 月 1 日至今的毫秒数
+    console.log(Number(new Date("2019-09-11")));    // 1568186258917 时间戳 Number() 还可以把日期转换为数字：
+    Number('12'); // 12  数字类型
+    Number(11 ); // NaN 
+    Number(undefined); //NaN 
+    Number(null) ;//0;
+    Number(''); //0；
+
+    // 5) parseInt() 解析一段字符串,并返回一个整数。（取整）
+    parseInt("10");         // 返回 10
+    parseInt("10.33");      // 返回 10
+    parseInt("10 20 30");   // 返回 10
+    parseInt("10 years");   // 返回 10
+    parseInt("years 10");   // 返回 NaN 如果无法转换为数值，则返回 NaN (Not a Number) 
+
+    // 6)  parseFloat() 解析一段字符串 并返回一个浮点数
+    parseFloat("10");        // 返回 10
+    parseFloat("10.33");     // 返回 10.33
+    parseFloat("10 20 30");  // 返回 10
+    parseFloat("10 years");  // 返回 10
+    parseFloat("years 10");  // 返回 NaN
+
+    // 7)   Math.min()  方法可返回两个指定的数中带有较小的值的那个
+    Math.min(5,'7'); //5
+    Math.min(5,'q'); //NaN 如果有某个参数为 NaN，或是不能转换成数字的非数字值，则返回 NaN
+
+    // 8)   Math.max()  方法可返回两个指定的数中带有较小的值的那个
+    Math.min(5,'7'); //7 
+    Math.min(5,'q'); //NaN 如果有某个参数为 NaN，或是不能转换成数字的非数字值，则返回 NaN
+    
+    // 9)  Math.abs() 方法可返回数的绝对值
+    Math.abs(-7.56); // 7.56
+
+    // 10)  Math.ceil()  方法可对一个数进行 向上取整
+    Math.ceil(3.12)  // 3
+
+    // 11)  Math.floor  方法对一个数进行 乡下取整
+    Math.floor(0.60); //0
+    Math.floor(0.40); //0
+    Math.floor(-5.1); //-6
+
+    // 12)  NumberisInteger() 用于判断其参数是否为整数
+    Number.isInteger(0) // 0
+    Number.isInteger(0.1)  // false
+
+    // 13.Number.parseFloat()和parseFloat()一样。
+
+    // 14.Number.parseInt()和parseInt()一样。
+
+    // 15)  isNaN()  函数用于检查其参数是否是非数字值 和  Number.isNan一样
+    // 使用isNaN() 来判断一个值是否是数字.原因是NaN与所有值都不相等,包括它自己
+
+    isNaN(123); //  false 是数字类型
+    isNaN('123'); //  true 不是数字类型
+
+    // 16)  Math.trunc()  方法用于去除一个数的小数部分,返回整数部分
+    Math.trunc(4.1) // 4
+    Math.trunc(4.9) // 4
+    Math.trunc(-4.1) // -4
+    Math.trunc(-4.9) // -4
+    Math.trunc(NaN); // NaN
+    Math.trunc('foo'); // NaN
+    Math.trunc(); // NaN
+
+    // 17  Math.sign 方法用来判断一个数到底是正数 负数 还是零 参数为正数, 返回+1
+    Math.sign(-5) // -1
+    Math.sign(5) // +1
+    Math.sign(0) // +0
+    Math.sign(-0) // -0
+    Math.sign(NaN) // NaN
+    Math.sign('foo'); // NaN
+    Math.sign(); // NaN
+
+</script>

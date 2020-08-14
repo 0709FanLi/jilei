@@ -1,3 +1,3 @@
 在Vue中如何获取dom?
 
-ref = 'domName' 用法：this.$refs.domName
+    ref = 'domName' 用法：this.$refs.domName

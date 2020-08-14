@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" >
     <keep-alive >
         <router-view v-if="$route.meta.keepAlive"></router-view>>
     </keep-alive>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
 }
 </script>
 
@@ -22,11 +22,12 @@ code, kbd, pre, samp { font-family:couriernew, courier, monospace; }
 small{ font-size:12px; }  
 ul, ol { list-style:none; }  
 a { text-decoration:none; }  
-a:hover { text-decoration:underline; }  
-sup { vertical-align:text-top; }  
+a:hover { text-decoration:underline; }
+sup { vertical-align:text-top; }
 sub{ vertical-align:text-bottom; }  
-legend { color:#000; }  
-fieldset, img { border:0; }  
+legend { color:#000; }
+fieldset, img { border:0; }
 button, input, select, textarea { font-size:100%; }
-
+html,body{height: 100%;width:100%}
+#app{width: 100%;height: 100%;font-family:"微软雅黑";}
 </style>
