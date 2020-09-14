@@ -18,19 +18,19 @@
 
     // search 1. 使用正则表达式 2. 使用字符串,字符串参数会转化为正则表达式
     let str = "Visit Runoob!"; 
-    let patt = str.search('/un/i');     //  -1
+    let patt = str.search('/Runoob/i');             //  -1
     let n = str.search(/un/i);
     let nn = str.search('un');
-    console.log('patt',patt);
-    console.log('n',n);                 // 7
-    console.log('nn',nn);               // 7
+    console.log('patt',patt);                       // -1 单引号 匹配不到
+    console.log('n',n);                             // 7
+    console.log('nn',nn);                           // 7
 
     // replace 1. 使用正则表达式 2. 使用字符串
     let strReplace = 'li guang yuan';
     let txt = strReplace.replace(/g/ig,'---');
     let txttt = strReplace.replace('g','---');
-    console.log('txt',txt);
-    console.log('txttt',txttt);
+    console.log('txt',txt);                         //  ---uan--- yuan  全局替换
+    console.log('txttt',txttt);                     //  ---uang yuan    替换匹配到的第一个    
 
     // i 不区分大小写
     // g 全局匹配
@@ -39,33 +39,154 @@
     var regm1 = /an$/;
     var regm2 = /od$/;
     var regm3 = /an$/m;
-    console.log(strm.search(regm1));              //-1  没有找到
-    console.log(strm.search(regm2));              //22  
-    console.log(strm.search(regm3));              // 8  多行匹配可以查询到
+    console.log(strm.search(regm1));                //-1  没有找到
+    console.log(strm.search(regm2));                //22  
+    console.log(strm.search(regm3));                // 8  多行匹配可以查询到
 
     ////////////////////////////////////////////////
     //  [] 查找方括号之间的任何字符
     let strz = "巫峡粉丝 WuXiaFenSi 酸辣粉 火锅粉 豌豆粉丝 suan_la_fen huo_guo_fen wan_dou_fen_si 023-91781688";
  
-    let regz = /[a-z]/g; //匹配所有a到z之间的字母，包括a和z
-    let resultz = strz.replace(regz,""); //将匹配到的所有字符替换成空
-    console.log(resultz); //上面将匹配到的所有小写字母都替换成了空，所以留下的全是中文,大写字母,符号,数字
+    let regz = /[a-z]/g;                            // 匹配所有a到z之间的字母，包括a和z
+    let resultz = strz.replace(regz,"");            //将匹配到的所有字符替换成空
+    console.log(resultz);                           //上面将匹配到的所有小写字母都替换成了空，所以留下的全是中文,大写字母,符号,数字
 
-    let regn = /[0-9]/g;        // 匹配所有的0-9之间的数字
-    let resultn = strz.replace(regn,'');//将匹配到的所有字符替换成空
-    console.log('resultn',resultn);//上面将匹配到的所有数字都替换成了空，
+    let regn = /[0-9]/g;                            // 匹配所有的0-9之间的数字
+    let resultn = strz.replace(regn,'');            //将匹配到的所有字符替换成空
+    console.log('resultn',resultn);                 //上面将匹配到的所有数字都替换成了空，
 
     var strs = "巫峡粉丝 WuXiaFenSi 酸辣粉 火锅粉 豌豆粉丝 suan_la_fen huo_guo_fen wan_dou_fen_si 023-91781688";
-    var regs = /[^a-z]/ig; //匹配所有a到z(包括a和z)以外的字符，不区分大小写,意思就是大写字母也会被匹配到
-    var results = strs.replace(regs,""); //将匹配到的所有字符替换成空
-    console.log(results);//除了小写字母和大写字母以外的字符都被替换成空了，那么剩下的就只有小写字母和大写字母了
+    var regs = /[^a-z]/ig;                          //匹配所有a到z(包括a和z)以外的字符，不区分大小写,意思就是大写字母也会被匹配到
+    var results = strs.replace(regs,"");            //将匹配到的所有字符替换成空
+    console.log(results);                           //除了小写字母和大写字母以外的字符都被替换成空了，那么剩下的就只有小写字母和大写字母了
 
     var strr = "5 9 11 22 25 31 35 50 6 3 9 19 10";
-    var regr = /[1-2][0-9]/g; //匹配所有个位数字是0-9，十位数字是1-2的数字
-    var resultr = strReplace.match(regr); //返回匹配到的所有字符
-    console.log(resultr);
+    var regr = /[1-2][0-9]/g;                       //匹配所有个位数字是0-9，十位数字是1-2的数字
+    var resultr = strr.match(regr);                 //返回匹配到的所有字符
+    console.log('resultr', resultr);
 
-    // () 分组操作
+    //   正则特殊字符
+
+    //   []
+    let lstr = 'ni hao a ball call  666';
+    let lstrIindex = lstr.search(/[abc]/ig);
+    let mlstr = lstr.match(/[abc]/ig);
+    console.log('[]', lstrIindex);                  //  4
+    console.log('[]', mlstr);                       //  ["a", "a", "b", "a", "c", "a"]
+
+    // \s 表示 Unicode空白符 \S 表示非 Unicode空白符
+    {
+        let str = 'ni hao a';
+        let num = str.search(/\s/g);
+        console.log(num);                           //  2
+        let nstr = str.replace(/\s/g,"")
+        console.log(nstr);                          //  nihaoa
+    }
+    //  \w 表示任何单字字符 \W相反
+
+    {
+        let str = 'ni hao a';
+        let num = str.search(/\w/);
+        let snum = str.search(/\W/);
+        console.log('\w',num)                       //  0
+        console.log('\w',snum)                      //  2
+    }
+
+    //  \d 任何数字 相当于 [0-9];   \D与\w相反
+
+    {
+        let str = 'ni hao 666 h50';
+        let num = str.search(/\d/g)
+        console.log('d', num);                      //  7
+    }
+
+    // \b 在字符类中使用表示退格符 [\b]表示退格直接量 \b 可以用来
+    // 指定匹配位置,也可称为锚
+
+    {
+        let str = 'ni ssssssssssssssssss hao a';
+        let num = str.search(/\bhao\b/g)
+        console.log('\b',num)                       //  22
+    }
+
+    //  -表示连字符
+    {
+        let str = 'ni hao a';
+        let num = str.replace(/[a-b]/g,0);
+        console.log('-',num);  //  ni h0o 0
+    }
+
+    // . 表示除换行符和其它Unicode行终止符之外的任意字符
+    {
+        let str = 'ni hh^^^^^hh * - = sss 000 kkkk ';
+        let num = str.replace(/[a-z0-9]./g, '========');
+        console.log('.',num);
+    }
+
+    // ^ 具有两重含义: 开始标记和非, 如: /^a/ 表示以a开始的字符, 当在 [] 中时:  [^a]  表示非a的所有字符.
+    {
+        let str = 'An e 和';
+        let num = str.search(/^A/);
+        console.log('^^^^^',num);                   //  0
+    }
+
+
+    //  $   表示字符结尾 如 /^abc$/  表示以c结束的字符
+    {
+        let str = 'nihaoa';
+        let str2 = 'ni hao a';
+        let num = str.search(/^nihaoa$/);
+        console.log('nihaoa',num);                  //  0
+        let num2 = str2.search(/\bhao\b/);
+        console.log('num2', num2);                  //  3    
+    }
+
+    //  {}  表示重复上一项. 如/\d{2,4}/表示数字出现两次,最多出现四次
+    //  如 /3{1,3}/ 匹配 3 33 333 不匹配 3333 33333
+    //  {n,m}   表示至少n次 至多m次 {n,} 至少n次 {n}  正好n次
     
+    {
+        let str = 'ni hao aaaaa';
+        let num = str.search(/a{2,}/);
+        console.log('{}',num);                      //  7
+
+        let str1 = 'ni hao aaaaa';
+        let num1 = str1.replace(/a{2,}/, 666);
+        console.log('{}',num1);                     //  ni hao 666
+    }
+
+    //  ?   表示 {0,1}  + 表示{1,}  * 表示{0,}
+    {
+        let str = 'ni hao a';
+        let num = str.search(/a?/);
+        console.log('?',num);   
+    }
+
+    {
+        let str = 'ni hao a';
+        let num = str.search(/ /);
+        console.log('',num);
+    }
+
+    //  |   表示分割,即或的含义. 如: /ab|cd|ef/ 匹配含有ab或cd或ef的字符串;
+    {
+        let str = 'ni hao a';
+        let num = str.search(/ac|ha/ig);
+        console.log('|',num);                       //      3
+    }
+
+    /*
+        ()  表示三种用途: 一是定义子表达式 二是在完整的模式中定义子模式 三是表达式的引用,
+        子模式的定义可以从目标字符串中抽取和括号中的子模式相匹配的部分,子模式的表达式的引用,
+        是指: 可识别子模式的编号,提取它,如:/(abc)\sis\(string\w)/; 
+              里边含有两个子表达式:可通过:
+              1. 
+    */
+
+    {
+        let str = 'ni hao aAAA';
+        let num = str.search(/(a|a){2,}/ig);
+        console.log('()',num);                       //      3
+    }
 
 </script>
